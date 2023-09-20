@@ -10,17 +10,47 @@
                             <form action="{{ route('register') }}" method="post" class="mx-1 mx-md-4">
                                 @csrf
                                 <div class="d-flex flex-row align-items-center mb-4">
-                                    <input type="text" name="name" class="form-control" placeholder="Name" />
+                                    <input type="text" name="name"
+                                        class="form-control @error('name') is-invalid @enderror" placeholder="Name" />
+                                    @error('name')
+                                        <span class="d-flex invalid-feedback" role="alert">
+                                            <strong>
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
-                                    <input type="email" name="email" class="form-control" placeholder="Email address" />
+                                    <input type="email" name="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        placeholder="Email address" />
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>
+                                                {{ $message }}
+                                            </strong>
+
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" />
+                                    <input type="password" name="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        placeholder="Password" />
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
-                                    <input type="password" name="password_confirmation" class="form-control"
+                                    <input type="password" name="password_confirmation"
+                                        class="form-control @error('password_confirmation') is-invalid @enderror"
                                         placeholder="Confirm password" />
+                                    @error('password_confirmation')
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-danger w-100 mb-3">Register</button>
