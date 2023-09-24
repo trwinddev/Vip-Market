@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/auth', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/auth/category', function () {
-    return view('backend.category.create');
+// admin
+Route::group(['prefix' => 'auth'], function () {
+    Route::resource('/category', CategoryController::class);
 });

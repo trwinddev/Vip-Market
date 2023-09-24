@@ -7,7 +7,8 @@
                     <h4>Add Category</h4>
                     <div class="card">
                         <div class="card-body">
-                            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('category.store') }}" class="forms-sample" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
