@@ -27,3 +27,7 @@ Route::get('/auth', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/auth/category', function () {
+    return view('backend.category.create');
+});
