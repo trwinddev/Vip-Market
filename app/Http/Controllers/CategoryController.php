@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryFormRequest;
+use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -34,7 +36,13 @@ class CategoryController extends Controller
      */
     public function store(CategoryFormRequest $request)
     {
-        dd('test');
+        $image = $request->file('image')->store('public/category');
+        Category::create([
+            'name' => $name = $request->name,
+            'image' => $image,
+            'slug' => Str::slug($name)
+        ]);
+        return redirect()->back();
     }
 
     /**
