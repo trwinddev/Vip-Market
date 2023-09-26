@@ -99,6 +99,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if (Storage::delete($category->image)) {
+            $category->delete();
+        }
+        return back();
     }
 }
