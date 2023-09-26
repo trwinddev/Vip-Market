@@ -19,16 +19,15 @@
                                     </thead>
                                     <tbody>
                                         @forelse($categories as $category)
-                                            {{-- <?php
-                                            dd(Storage::url($category->image));
-                                            ?> --}}
                                             <tr>
                                                 <td><img src="{{ Storage::url($category->image) }}"></td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>
-                                                    <button class="btn btn-info">
-                                                        <i class="mdi mdi-table-edit"></i>
-                                                    </button>
+                                                    <a href="{{ route('category.edit', [$category->id]) }}">
+                                                        <button class="btn btn-info">
+                                                            <i class="mdi mdi-table-edit"></i>
+                                                        </button>
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-danger">
