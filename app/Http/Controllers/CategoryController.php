@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
+use BackedEnum;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -66,7 +68,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -78,7 +81,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        if ($request->hasFile('image')) {
+            Storage::delete($category->image);
+            $image = $request->file('image')->store('public/category');
+            $category->update(['name' => $request->name, 'image' => $image]);
+        }
+        $category->update(['name' => $request->name]);
+        return redirect()->route('category.index');
     }
 
     /**
