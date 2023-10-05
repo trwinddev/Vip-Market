@@ -39,10 +39,20 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pages/forms/basic_elements.html">
-                    <i class="mdi mdi-view-headline menu-icon"></i>
-                    <span class="menu-title">Form elements</span>
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
+                    aria-controls="ui-basic2">
+                    <i class="mdi mdi-circle-outline menu-icon"></i>
+                    <span class="menu-title">Childcategory</span>
+                    <i class="menu-arrow"></i>
                 </a>
+                <div class="collapse" id="ui-basic2">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('childcategory.create') }}">Add</a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('childcategory.index') }}">Manage</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="pages/charts/chartjs.html">
@@ -73,9 +83,11 @@
                         <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
                         <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
                         <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a>
+                        <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2
+                            </a>
                         </li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a>
+                        <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen
+                            </a>
                         </li>
                     </ul>
                 </div>
