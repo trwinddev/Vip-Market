@@ -15,11 +15,11 @@ class SubcategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     $subcategories = Subcategory::orderBy('category_id')->get();
-    //     return view('backend.subcategory.index', compact('subcategories'));
-    // }
+    public function index()
+    {
+        $subcategories = Subcategory::orderBy('category_id')->get();
+        return view('backend.subcategory.index', compact('subcategories'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -77,15 +77,15 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(SubcategoryUpdateRequest $request, $id)
-    // {
-    //     Subcategory::find($id)->update([
-    //         'name' => $request->name,
-    //         'category_id' => $request->category_id
-    //     ]);
-    //     return redirect()->route('subcategory.index')
-    //         ->with('message', 'Subcategory updated');
-    // }
+    public function update(SubcategoryUpdateRequest $request, $id)
+    {
+        Subcategory::find($id)->update([
+            'name' => $request->name,
+            'category_id' => $request->category_id
+        ]);
+        return redirect()->route('subcategory.index')
+            ->with('message', 'Subcategory updated');
+    }
 
     /**
      * Remove the specified resource from storage.
