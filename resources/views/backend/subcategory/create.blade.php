@@ -24,12 +24,12 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="image">Choose category</label>
-                                    <select class="form-control" name="category_id"
-                                        @error('category_id') is-invalid @enderror">
+                                    <label for="name">Choose category</label>
+                                    <select class="form-control @error('category_id') is-invalid @enderror"
+                                        name="category_id">
                                         <option value="">Select category</option>
                                         @foreach (App\Models\Category::all() as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>Í
                                         @endforeach
                                     </select>
                                     @error('category_id')
@@ -37,6 +37,7 @@
                                             <strong>
                                                 {{ $message }}
                                             </strong>
+
                                         </span>
                                     @enderror
                                 </div>
