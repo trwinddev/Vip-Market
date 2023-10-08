@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\ChildcategoryController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +18,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/auth', function () {
+    return view('backend.admin.index');
+});
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+// admin
+Route::group(['prefix' => 'auth'], function () {
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/subcategory', SubcategoryController::class);
+    Route::resource('/childcategory', ChildcategoryController::class);
+});
+
+Route::get('/', [MenuController::class, 'menu']);

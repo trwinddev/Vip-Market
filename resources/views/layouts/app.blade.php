@@ -91,26 +91,36 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarHover">
                 <ul class="navbar-nav container-fluid">
-                    @for ($i = 0; $i < 5; $i++)
+                    @foreach ($menus as $menuItem)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href=""
                                 data-toggle="dropdown_remove_fropsown_class_for_clickable_link" aria-haspopup="true"
                                 aria-expanded="false">
-                                Category(Electronics)</a>
+                                {{ $menuItem->name }}</a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="" class="dropdown-item dropdown-toggle">
-                                        Subcategory(Laptop)
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li> <a href="" class="dropdown-item">
-                                                Childcategory(Acer)
-                                            </a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                @foreach ($menuItem->subcategories as $subMenuItem)
+                                    <li>
+                                        <a href="" class="dropdown-item dropdown-toggle">
+                                            {{ $subMenuItem->name }}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($subMenuItem->childcategories as $childMenu)
+                                                <li> <a href="" class="dropdown-item">
+                                                        {{ childMenu->name }}
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li> <a href="" class="dropdown-item">
+                                                                Childcategory(Acer)
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
                         </li>
-                    @endfor
+                    @endforeach
                 </ul>
             </div>
         </nav>
@@ -185,6 +195,7 @@
                 background-color: red;
                 color: #fff;
             }
+        }
     </style>
 </body>
 
