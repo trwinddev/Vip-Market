@@ -18,7 +18,7 @@ use App\Http\Controllers\ChildcategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/home', function () {
