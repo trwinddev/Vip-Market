@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <form action="#" method="post" enctype="multipart/form-data">@csrf
+                <form action="{{ route('ads.store') }}" method="post" enctype="multipart/form-data">@csrf
                     <div class="card">
                         <div class="card-header text-white" style="background-color: red">
                             Post your ad.
@@ -29,13 +29,13 @@
                             <label for="file" class="mt-2"><b>Upload 3 Images</b></label>
                             <div class="form-inline form-group mt-1">
                                 <div class="col-md-4">
-                                    <input type="file" class="" name="feature_image">
+                                    <input type="file" class="" name="feature_image" accept="image/*">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="file" class="" name="first_image">
+                                    <input type="file" class="" name="first_image" accept="image/*">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="file" class="" name="second_image">
+                                    <input type="file" class="" name="second_image" accept="image/*">
                                 </div>
                             </div>
                             <label for="file" class="mt-2"><b>Choose category</b></label>
@@ -43,16 +43,25 @@
                                 <div class="col-md-4">
                                     <select class="form-control" name="category_id">
                                         <option value=""> choose category</option>
+                                        @foreach (App\Models\Category::all() as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <select class="form-control" name="subcategory_id">
                                         <option value="">choose subcategory</option>
+                                        @foreach (App\Models\Subcategory::all() as $subcategory)
+                                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <select class="form-control" name="childcategory_id">
                                         <option value="">choose childcategory</option>
+                                        @foreach (App\Models\Childcategory::all() as $childcategory)
+                                            <option value="{{ $childcategory->id }}">{{ $childcategory->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -93,16 +102,25 @@
                                 <div class="col-md-4">
                                     <select class="form-control" name="country_id">
                                         <option value=""> Select country</option>
+                                        @foreach (App\Models\Country::all() as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <select class="form-control" name="state_id">
                                         <option value="">Select state</option>
+                                        @foreach (App\Models\State::all() as $state)
+                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <select class="form-control" name="city_id">
                                         <option value="">Select city </option>
+                                        @foreach (App\Models\City::all() as $city)
+                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
