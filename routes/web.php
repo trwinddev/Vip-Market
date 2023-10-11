@@ -6,6 +6,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\AdvertisementController;
+use App\Models\Category;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +39,6 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::get('/', [MenuController::class, 'menu']);
+
+// ads
+Route::get('/ads/create', [AdvertisementController::class, 'create']);
