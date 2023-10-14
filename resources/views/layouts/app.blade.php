@@ -106,7 +106,7 @@
                                         <ul class="dropdown-menu">
                                             @foreach ($subMenuItem->childcategories as $childMenu)
                                                 <li> <a href="" class="dropdown-item">
-                                                        {{ childMenu->name }}
+                                                        {{ $childMenu->name }}
                                                     </a>
                                                     <ul class="dropdown-menu">
                                                         <li> <a href="" class="dropdown-item">
