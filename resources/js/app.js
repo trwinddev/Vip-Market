@@ -19,6 +19,10 @@ Vue.component(
     "second-image",
     require("./components/imagepreview/SecondImage.vue").default
 );
+Vue.component(
+    "category-dropdown",
+    require("./components/CategoryDropdown.vue").default
+);
 
 const app = new Vue({
     el: "#app",
