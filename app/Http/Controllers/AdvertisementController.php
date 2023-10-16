@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdsFormUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
@@ -83,7 +84,7 @@ class AdvertisementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdsFormUpdateRequest $request, $id)
     {
         $ad = Advertisement::find($id);
         $featureImage = $ad->feature_image;

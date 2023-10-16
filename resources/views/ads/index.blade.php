@@ -27,6 +27,7 @@
                                     <img src="{{ Storage::url($ad->feature_image) }}" width="130" alt="">
                                 </td>
                                 <td>{{ $ad->name }}</td>
+                                <td style="color: blue">{{ $ad->price }}</td>
                                 <td>{{ $ad->price }}</td>
                                 <td>
                                     @if ($ad->published == 1)
@@ -39,6 +40,8 @@
                                     <button class="btn btn-success">View</button>
                                 </td>
                                 <td>
+                                    <a href="{{ route('ads.edit', [$ad->id]) }}"> <button
+                                            class="btn btn-primary">Edit</button></a>
                                     <button class="btn btn-primary">Edit</button>
                                 </td>
                                 <td>
