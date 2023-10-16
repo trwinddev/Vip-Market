@@ -71,7 +71,9 @@ class AdvertisementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ad =  Advertisement::find($id);
+
+        return view('ads.edit', compact('ad'));
     }
 
     /**
@@ -83,7 +85,26 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ad = Advertisement::find($id);
+        $featureImage = $ad->feature_image;
+        $firstImage = $ad->first_image;
+        $secondImage = $ad->second_image;
+        $data = $request->all();
+        if ($request->hasFile('feature_image')) {
+            $featureImage = $request->file('feature_image')->store('public/category');
+        }
+        if ($request->hasFile('first_image')) {
+            $firstImage = $request->file('first_image')->store('public/category');
+        }
+        if ($request->hasFile('second_image')) {
+            $secondImage = $request->file('second_image')->store('public/category');
+        }
+        $data['feature_image'] = $featureImage;
+        $data['first_image'] = $firstImage;
+        $data['second_image'] = $secondImage;
+
+        $ad->update($data);
+        return redirect()->route('ads.index')->with('message', 'Your ad was updated!');
     }
 
     /**

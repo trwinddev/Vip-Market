@@ -44,3 +44,5 @@ Route::get('/', [MenuController::class, 'menu']);
 Route::get('/ads/create', [AdvertisementController::class, 'create'])->name('ads.create')->middleware('auth');
 Route::post('/ads/store', [AdvertisementController::class, 'store'])->name('ads.store')->middleware('auth');
 Route::get('/ads', [AdvertisementController::class, 'index'])->name('ads.index')->middleware('auth');
+Route::get('/ads/edit/{id}', [AdvertisementController::class, 'edit'])->name('ads.edit')->middleware('auth');
+Route::put('/ads/update/{id}', [AdvertisementController::class, 'update'])->name('ads.update')->middleware('auth');
