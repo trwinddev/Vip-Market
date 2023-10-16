@@ -28,7 +28,6 @@
                                 </td>
                                 <td>{{ $ad->name }}</td>
                                 <td style="color: blue">{{ $ad->price }}</td>
-                                <td>{{ $ad->price }}</td>
                                 <td>
                                     @if ($ad->published == 1)
                                         <span class="badge badge-success">Published</span>
@@ -40,9 +39,9 @@
                                     <button class="btn btn-success">View</button>
                                 </td>
                                 <td>
-                                    <a href="{{ route('ads.edit', [$ad->id]) }}"> <button
-                                            class="btn btn-primary">Edit</button></a>
-                                    <button class="btn btn-primary">Edit</button>
+                                    <a href="{{ route('ads.edit', [$ad->id]) }}">
+                                        <button class="btn btn-primary">Edit</button>
+                                    </a>
                                 </td>
                                 <td>
                                     <button class="btn btn-danger">Delete</button>
