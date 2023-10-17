@@ -14,4 +14,14 @@ class Childcategory extends Model
     {
         return $this->belongsTo(Subcategory::class, 'subcategory_id', 'id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function ads()
+    {
+        return $this->hasMany(Advertisement::class);
+    }
 }
