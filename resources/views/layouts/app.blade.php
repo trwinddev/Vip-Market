@@ -93,19 +93,22 @@
                 <ul class="navbar-nav container-fluid">
                     @foreach ($menus as $menuItem)
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href=""
+                            <a class="nav-link dropdown-toggle" href="{{ route('category.show', $menuItem->slug) }}"
                                 data-toggle="dropdown_remove_fropsown_class_for_clickable_link" aria-haspopup="true"
                                 aria-expanded="false">
                                 {{ $menuItem->name }}</a>
                             <ul class="dropdown-menu">
                                 @foreach ($menuItem->subcategories as $subMenuItem)
                                     <li>
-                                        <a href="" class="dropdown-item dropdown-toggle">
+                                        <a class="dropdown-item dropdown-toggle"
+                                            href="{{ route('subcategory.show', [$menuItem->slug, $subMenuItem->slug]) }}">
                                             {{ $subMenuItem->name }}
                                         </a>
                                         <ul class="dropdown-menu">
                                             @foreach ($subMenuItem->childcategories as $childMenu)
-                                                <li> <a href="" class="dropdown-item">
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('childcategory.show', [$menuItem->slug, $subMenuItem->slug, $childMenu->slug]) }}">
                                                         {{ $childMenu->name }}
                                                     </a>
                                                     <ul class="dropdown-menu">

@@ -7,6 +7,8 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FrontendController;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
 
@@ -46,3 +48,12 @@ Route::post('/ads/store', [AdvertisementController::class, 'store'])->name('ads.
 Route::get('/ads', [AdvertisementController::class, 'index'])->name('ads.index')->middleware('auth');
 Route::get('/ads/edit/{id}', [AdvertisementController::class, 'edit'])->name('ads.edit')->middleware('auth');
 Route::put('/ads/update/{id}', [AdvertisementController::class, 'update'])->name('ads.update')->middleware('auth');
+
+//profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+
+//frontend
+Route::get(
+    '/product/{categorySlug}',
+    [FrontendController::class, 'findBasedOnCategory']
+)->name('category.show');
