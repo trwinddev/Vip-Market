@@ -3,6 +3,9 @@ require("./bootstrap");
 window.Vue = require("vue");
 window.axios = require("axios");
 
+import VueChatScroll from "vue-chat-scroll";
+Vue.use(VueChatScroll);
+
 Vue.component(
     "example-component",
     require("./components/ExampleComponent.vue").default
@@ -22,6 +25,16 @@ Vue.component(
 Vue.component(
     "category-dropdown",
     require("./components/CategoryDropdown.vue").default
+);
+Vue.component(
+    "country-dropdown",
+    require("./components/AdressDropDown.vue").default
+);
+Vue.component("message", require("./components/Message.vue").default);
+Vue.component("conversation", require("./components/Conversation.vue").default);
+Vue.component(
+    "show-phone-number",
+    require("./components/ShowPhoneNumber.vue").default
 );
 
 const app = new Vue({
