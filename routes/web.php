@@ -57,3 +57,10 @@ Route::get(
     '/product/{categorySlug}',
     [FrontendController::class, 'findBasedOnCategory']
 )->name('category.show');
+
+//Message
+Route::post('/send/message', 'SendMessageController@store')->middleware('auth');
+Route::get('messages', 'SendMessageController@index')->name('messages')->middleware('auth');
+Route::get('/users', 'SendMessageController@chatWithThisUser');
+Route::get('/message/user/{id}', 'SendMessageController@showMessages');
+Route::post('/start-conversation', 'SendMessageController@startConversation');
