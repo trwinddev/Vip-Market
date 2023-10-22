@@ -64,3 +64,8 @@ Route::get('messages', 'SendMessageController@index')->name('messages')->middlew
 Route::get('/users', 'SendMessageController@chatWithThisUser');
 Route::get('/message/user/{id}', 'SendMessageController@showMessages');
 Route::post('/start-conversation', 'SendMessageController@startConversation');
+
+//Save ad
+Route::post('/ad/save', 'SaveAdController@saveAd');
+Route::post('/ad/remove', 'SaveAdController@removeAd')->name('ad.remove');
+Route::get('/saved-ads', 'SaveAdController@getMyads')->name('saved.ad');

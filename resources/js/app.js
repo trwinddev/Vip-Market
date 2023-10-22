@@ -36,6 +36,7 @@ Vue.component(
     "show-phone-number",
     require("./components/ShowPhoneNumber.vue").default
 );
+Vue.component("save-ad", require("./components/SaveAd.vue").default);
 
 const app = new Vue({
     el: "#app",
