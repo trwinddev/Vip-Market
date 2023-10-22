@@ -24,7 +24,7 @@
                                         <img src="{{ Storage::url($advertisement->feature_image) }}" class="img-thumbnail"
                                             style="">
                                         <p class="text-center card-footer" style="color: royalblue;">
-                                            {{ $advertisement->name }}/USD {{ $advertisement->price }}
+                                            {{ $advertisement->name }}/VND {{ $advertisement->price }}
                                         </p>
                                     </a>
                                 </div>

@@ -41,7 +41,7 @@
                             <a href="{{ route('product.view', [$advertisement->id, $advertisement->slug]) }}">
                                 <img src="{{ Storage::url($advertisement->feature_image) }}" class="img-thumbnail">
                                 <p class="text-center  card-footer" style="color: blue;">
-                                    {{ $advertisement->name }}/USD {{ $advertisement->price }}
+                                    {{ $advertisement->name }}/VND {{ $advertisement->price }}
                                 </p>
                             </a>
                         </div>

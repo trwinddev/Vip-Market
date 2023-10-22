@@ -59,7 +59,7 @@
                                 <textarea name="description" id="mytextarea" class="form-control">{{ $ad->description }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="description">Price(USD)</label>
+                                <label for="description">Price(VND)</label>
                                 <input type="text" name="price" class="form-control" value="{{ $ad->price }}">
                             </div>
                             <div class="form-group">
@@ -67,18 +67,22 @@
                                 <select class="form-control" name="price_status">
                                     <option value="negoitable" {{ $ad->price_status == 'negoitable' ? 'selected' : '' }}>
                                         Negotiable</option>
-                                    <option value="fixed" {{ $ad->price_status == 'fixed' ? 'selected' : '' }}>Fixed</option>
+                                    <option value="fixed" {{ $ad->price_status == 'fixed' ? 'selected' : '' }}>Fixed
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="description">Product Condition</label>
                                 <select class="form-control" name="product_condition">
                                     <option value="">Select </option>
-                                    <option value="likenew" {{ $ad->product_condition == 'likenew' ? 'selected' : '' }}>Looks like
+                                    <option value="likenew" {{ $ad->product_condition == 'likenew' ? 'selected' : '' }}>
+                                        Looks like
                                         New</option>
-                                    <option value="heavilyused" {{ $ad->product_condition == 'heavilyused' ? 'selected' : '' }}>
+                                    <option value="heavilyused"
+                                        {{ $ad->product_condition == 'heavilyused' ? 'selected' : '' }}>
                                         Heavily Used</option>
-                                    <option value="new" {{ $ad->product_condition == 'new' ? 'selected' : '' }}>New</option>
+                                    <option value="new" {{ $ad->product_condition == 'new' ? 'selected' : '' }}>New
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group">

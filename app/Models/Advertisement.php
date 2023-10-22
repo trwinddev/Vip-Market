@@ -11,22 +11,22 @@ use App\Models\Country;
 use App\Models\City;
 use App\Models\State;
 use App\Models\User;
-use Cohensive\Embed\Facades\Embed;
+// use Cohensive\Embed\Facades\Embed;
 
 class Advertisement extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function displayVideoFromLink()
-    {
-        $embed = Embed::make($this->link)->parseUrl();
-        if (!$embed) {
-            return;
-        }
-        $embed->setAttribute(['width' => 500]);
-        return $embed->getHtml();
-    }
+    // public function displayVideoFromLink()
+    // {
+    //     $embed = Embed::make($this->link)->parseUrl();
+    //     if (!$embed) {
+    //         return;
+    //     }
+    //     $embed->setAttribute(['width' => 500]);
+    //     return $embed->getHtml();
+    // }
 
     public function childcategory()
     {
