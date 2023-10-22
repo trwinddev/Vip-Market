@@ -27,18 +27,22 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/auth', function () {
-    return view('backend.admin.index');
-});
+// Route::get('/auth', function () {
+//     return view('backend.admin.index');
+// });
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // admin
 Route::group(['prefix' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('backend.admin.index');
+    });
     Route::resource('/category', CategoryController::class);
     Route::resource('/subcategory', SubcategoryController::class);
     Route::resource('/childcategory', ChildcategoryController::class);
     Route::get('/allads', 'AdminListingController@index')->name('all.ads');
+    Route::get('/reported-ads', 'FraduController@index')->name('all.reported.ads');
 });
 
 Route::get('/', [MenuController::class, 'menu']);
@@ -52,12 +56,25 @@ Route::put('/ads/update/{id}', [AdvertisementController::class, 'update'])->name
 
 //profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::post('/profile', 'ProfileController@updateProfile')->name('update.profile')->middleware('auth');
+
+//user ads
+Route::get('/ads/{userId}/view', 'FrontendController@viewUserAds')->name('show.user.ads');
 
 //frontend
 Route::get(
     '/product/{categorySlug}',
     [FrontendController::class, 'findBasedOnCategory']
 )->name('category.show');
+Route::get('/product/{categorySlug}/{subcategorySlug}', 'FrontendController@findBasedOnSubcategory')
+    ->name('subcategory.show');
+Route::get(
+    '/product/{categorySlug}/{subcategorySlug}/{childCategorySlug}',
+    'FrontendController@findBasedOnChildcategory'
+)
+    ->name('childcategory.show');
+Route::get('/products/{id}/{slug}', 'FrontendController@show')
+    ->name('product.view');
 
 //Message
 Route::post('/send/message', 'SendMessageController@store')->middleware('auth');
@@ -70,3 +87,6 @@ Route::post('/start-conversation', 'SendMessageController@startConversation');
 Route::post('/ad/save', 'SaveAdController@saveAd');
 Route::post('/ad/remove', 'SaveAdController@removeAd')->name('ad.remove');
 Route::get('/saved-ads', 'SaveAdController@getMyads')->name('saved.ad');
+
+//report this ad
+Route::post('/report-this-ad', 'FraduController@store')->name('report.ad');
