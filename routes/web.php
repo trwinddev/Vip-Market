@@ -38,6 +38,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/subcategory', SubcategoryController::class);
     Route::resource('/childcategory', ChildcategoryController::class);
+    Route::get('/allads', 'AdminListingController@index')->name('all.ads');
 });
 
 Route::get('/', [MenuController::class, 'menu']);
