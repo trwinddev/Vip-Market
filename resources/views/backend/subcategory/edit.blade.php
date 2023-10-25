@@ -4,6 +4,7 @@
         <div class="content-wrapper">
             <div class="row justify-content-center">
                 <div class="col-md-10">
+                    @include('backend.inc.message')
                     <h4>Update SubCategory</h4>
                     <div class="card">
                         <div class="card-body">
@@ -49,7 +50,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

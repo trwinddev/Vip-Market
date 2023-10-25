@@ -80,11 +80,11 @@ class SubcategoryController extends Controller
     public function update(SubcategoryUpdateRequest $request, $id)
     {
         Subcategory::find($id)->update([
-            'name' => $request->name,
-            'category_id' => $request->category_id
+            'name'=>$request->name,
+            'category_id'=>$request->category_id
         ]);
         return redirect()->route('subcategory.index')
-            ->with('message', 'Subcategory updated');
+            ->with('message','Subcategory updated');
     }
 
     /**

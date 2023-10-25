@@ -32,24 +32,25 @@
                                                     </a>
                                                 </td>
                                                 <td>
+                                                    <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
                                                         data-target="#exampleModal{{ $childcategory->id }}">
                                                         <i class="mdi mdi-delete"></i>
                                                     </button>
+                                                    <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal{{ $childcategory->id }}"
                                                         tabindex="-1" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <form
                                                                 action="{{ route('childcategory.destroy', $childcategory->id) }}"
-                                                                method="post">
-                                                                @csrf
+                                                                method="post">@csrf
                                                                 @method('DELETE')
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                                            Delete confirmation
-                                                                        </h5>
+                                                                            Delete
+                                                                            confirmation</h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
@@ -80,4 +81,45 @@
                     </div>
                 </div>
             </div>
+            <style>
+                td.categrory_1 {
+                    background-color: aliceblue;
+                }
+
+                td.categrory_2 {
+                    background-color: bisque;
+                }
+
+                td.categrory_3 {
+                    background-color: thistle;
+                }
+
+                td.categrory_4 {
+                    background-color: tomato;
+                }
+
+                td.categrory_5 {
+                    background-color: gray;
+                }
+
+                td.categrory_6 {
+                    background-color: unset;
+                }
+
+                td.categrory_7 {
+                    background-color: springgreen;
+                }
+
+                td.categrory_8 {
+                    background-color: orchid;
+                }
+
+                td.categrory_9 {
+                    background-color: pink;
+                }
+
+                td.categrory_10 {
+                    background-color: unset;
+                }
+            </style>
         @endsection

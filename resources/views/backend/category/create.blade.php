@@ -7,14 +7,13 @@
                     <h4>Add Category</h4>
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('category.store') }}" class="forms-sample" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
+                            <form class="forms-sample" action="{{ route('category.store') }}" method="post"
+                                enctype="multipart/form-data">@csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name"
                                         class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="Name of category">
+                                        placeholder="name of category">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>

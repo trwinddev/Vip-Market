@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
-use BackedEnum;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -45,8 +44,10 @@ class CategoryController extends Controller
             'name' => $name = $request->name,
             'image' => $image,
             'slug' => Str::slug($name)
+
         ]);
-        return redirect()->back();
+
+        return redirect()->route('category.index')->with('message', 'Category created successfully');
     }
 
     /**
@@ -57,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        //show individual record
     }
 
     /**
@@ -88,7 +89,7 @@ class CategoryController extends Controller
             $category->update(['name' => $request->name, 'image' => $image]);
         }
         $category->update(['name' => $request->name]);
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('message', 'Category updated successfully');;
     }
 
     /**
@@ -103,6 +104,6 @@ class CategoryController extends Controller
         if (Storage::delete($category->image)) {
             $category->delete();
         }
-        return back();
+        return back()->with('message', 'Category deleted successfully');;
     }
 }

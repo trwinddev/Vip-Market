@@ -19,13 +19,22 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/5qovufqekkfm6x72on94k5cryet3z5k4he1oprbdzuglbvds/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/5qovufqekkfm6x72on94k5cryet3z5k4he1oprbdzuglbvds/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-danger shadow-sm text-white">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color:#fff;">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -46,27 +55,43 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}"
+                                        style="color: #fff;padding-top:15px;">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"
+                                        style="color: #fff;padding-top:15px;">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a style="padding-top:15px;color:#fff;font-weight:bold;" id="navbarDropdown"
+                                    class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    @if (Auth::check() && Auth::user()->isadmin == 1)
+                                        <a class="dropdown-item" href="{{ url('auth/category') }}">
+                                            {{ __('Dashboard') }}
+                                        </a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ url('ads') }}" style="color:blue">
+                                            <i class="fas fa-camera" style="color:blue"></i> {{ __('Ads') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ url('messages') }}" style="color:blue">
+                                            <i class="fas fa-envelope" style="color:blue"></i> {{ __('Messages') }}
+                                        </a>
+                                    @endif
+                                    <a style="color:blue" class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        document.getElementById('logout-form').submit();"
+                                        style="color:black!important;" style="color:blue">
+                                        <i class="fas fa-user-lock" style="color:blue"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -79,7 +104,11 @@
                 </div>
             </div>
         </nav>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--second navbar-->
+        <a href="#" id="prev" style="background-color: red;color:#fff;display:none;">PREV MENU</a>
+        <a href="#" class="float-right" id="next" style="background-color: red;color:#fff;display:none;">NEXT
+            MENU</a>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm
         navbar-hover"
             id="showhideprevnext1">
@@ -89,14 +118,16 @@
                 aria-controls="navbarDD" aria-expanded="false" aria-label="Navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarHover">
-                <ul class="navbar-nav container-fluid">
+            <div class="container collapse navbar-collapse" id="navbarHover">
+                <ul class="container-fluid navbar-nav" id="slider-i">
                     @foreach ($menus as $menuItem)
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('category.show', $menuItem->slug) }}"
-                                data-toggle="dropdown_remove_fropsown_class_for_clickable_link" aria-haspopup="true"
-                                aria-expanded="false">
-                                {{ $menuItem->name }}</a>
+                            <a class="nav-link dropdown-toggle text-dark"
+                                href="{{ route('category.show', $menuItem->slug) }}"
+                                data-toggle="dropdown_remove_dropdown_class_for_clickable_link" arial-haspopup="true"
+                                arial-expanded="false">
+                                {{ $menuItem->name }}
+                            </a>
                             <ul class="dropdown-menu">
                                 @foreach ($menuItem->subcategories as $subMenuItem)
                                     <li>
@@ -111,23 +142,17 @@
                                                         href="{{ route('childcategory.show', [$menuItem->slug, $subMenuItem->slug, $childMenu->slug]) }}">
                                                         {{ $childMenu->name }}
                                                     </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li> <a href="" class="dropdown-item">
-                                                                Childcategory(Acer)
-                                                            </a>
-                                                        </li>
-                                                    </ul>
                                                 </li>
                                             @endforeach
                                         </ul>
                                     </li>
                                 @endforeach
+                            </ul>
                         </li>
                     @endforeach
                 </ul>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
@@ -198,7 +223,6 @@
                 background-color: red;
                 color: #fff;
             }
-        }
     </style>
 </body>
 

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <d iv class="container ">
         <div class="row">
             <div class="col-md-6">
@@ -56,7 +57,7 @@
             </div>
             <div class="col-md-6">
                 <h1>{{ $advertisement->name }}</h1>
-                <p>Price: ${{ $advertisement->price }} VND, {{ $advertisement->price_status }}</p>
+                <p>Price: ${{ $advertisement->price }} USD, {{ $advertisement->price_status }}</p>
                 <p>Posted: {{ $advertisement->created_at->diffForHumans() }}</p>
                 <p>Listing location: {{ $advertisement->listing_location }}</p>
                 @if (Auth::check())
@@ -65,15 +66,12 @@
                         </save-ad>
                     @endif
                 @endif
-
-
                 <hr>
                 @if (!$advertisement->user->avatar)
                     <img src="/img/man.jpg" width="120">
                 @else
                     <img src="{{ Storage::url($advertisement->user->avatar) }}" width="120">
                 @endif
-
                 <p>
                     <a href="{{ route('show.user.ads', [$advertisement->user_id]) }}">
                         {{ $advertisement->user->name }}</a>

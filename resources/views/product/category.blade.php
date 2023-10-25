@@ -25,10 +25,11 @@
                             <a href="{{ route('product.view', [$advertisement->id, $advertisement->slug]) }}">
                                 <img src="{{ Storage::url($advertisement->feature_image) }}" class="img-thumbnail">
                                 <p class="text-center  card-footer" style="color: blue;">
-                                    {{ $advertisement->name }}/ {{ $advertisement->price }}
+                                    {{ $advertisement->name }}/USD {{ $advertisement->price }}
                                 </p>
                         </div>
                         </a>
+                    @empty
                         Sorry,we are unable to find product based on this cantegory
                     @endforelse
                 </div>

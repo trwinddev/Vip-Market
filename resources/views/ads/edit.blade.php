@@ -17,7 +17,6 @@
                         @endforeach
                     </div>
                 @endif
-
                 <form action="{{ route('ads.update', $ad->id) }}" method="post" enctype="multipart/form-data">@csrf
                     @method('PUT')
                     <div class="card">
@@ -27,10 +26,7 @@
                         <div class="card-body">
                             <label for="file" class="mt-2"><b>Upload 3 Images</b></label>
                             <div class="form-inline form-group mt-1">
-
                                 <div class="col-md-4">
-
-
                                     <image-preview />
                                 </div>
                                 <div class="col-md-4">
@@ -39,17 +35,11 @@
                                 <div class="col-md-4">
                                     <second-image />
                                 </div>
-
                             </div>
                             <label for="file" class="mt-2"><b>Choose category</b></label>
                             <div class="form-inline form-group mt-1">
-
                                 <category-dropdown />
-
-
-
                             </div>
-
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" class="form-control" value="{{ $ad->name }}">
@@ -59,7 +49,7 @@
                                 <textarea name="description" id="mytextarea" class="form-control">{{ $ad->description }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="description">Price(VND)</label>
+                                <label for="description">Price(USD)</label>
                                 <input type="text" name="price" class="form-control" value="{{ $ad->price }}">
                             </div>
                             <div class="form-group">
@@ -67,22 +57,18 @@
                                 <select class="form-control" name="price_status">
                                     <option value="negoitable" {{ $ad->price_status == 'negoitable' ? 'selected' : '' }}>
                                         Negotiable</option>
-                                    <option value="fixed" {{ $ad->price_status == 'fixed' ? 'selected' : '' }}>Fixed
-                                    </option>
+                                    <option value="fixed" {{ $ad->price_status == 'fixed' ? 'selected' : '' }}>Fixed</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="description">Product Condition</label>
                                 <select class="form-control" name="product_condition">
                                     <option value="">Select </option>
-                                    <option value="likenew" {{ $ad->product_condition == 'likenew' ? 'selected' : '' }}>
-                                        Looks like
+                                    <option value="likenew" {{ $ad->product_condition == 'likenew' ? 'selected' : '' }}>Looks like
                                         New</option>
-                                    <option value="heavilyused"
-                                        {{ $ad->product_condition == 'heavilyused' ? 'selected' : '' }}>
+                                    <option value="heavilyused" {{ $ad->product_condition == 'heavilyused' ? 'selected' : '' }}>
                                         Heavily Used</option>
-                                    <option value="new" {{ $ad->product_condition == 'new' ? 'selected' : '' }}>New
-                                    </option>
+                                    <option value="new" {{ $ad->product_condition == 'new' ? 'selected' : '' }}>New</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -92,7 +78,6 @@
                             </div>
                             <label for="file" class="mt-2"><b>Choose address</b></label>
                             <div class="form-inline form-group mt-1">
-
                                 <country-dropdown />
                             </div>
                             <div class="form-group">
@@ -107,7 +92,6 @@
                             <div class="form-group">
                                 <button class="btn btn-danger float-right" type="submit">Update ad</button>
                             </div>
-
                         </div>
                     </div>
                 </form>

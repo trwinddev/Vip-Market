@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdsFormRequest;
 use App\Http\Requests\AdsFormUpdateRequest;
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Advertisement;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AdvertisementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +24,7 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $ads = Advertisement::where('user_id', auth()->user()->id)->get();
+        $ads = Advertisement::latest()->where('user_id', auth()->user()->id)->get();
         return view('ads.index', compact('ads'));
     }
 
@@ -28,6 +35,7 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
+
         return view('ads.create');
     }
 
@@ -37,8 +45,9 @@ class AdvertisementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdsFormRequest $request)
     {
+
         $data = $request->all();
         $featureImage = $request->file('feature_image')->store('public/category');
         $firstImage = $request->file('first_image')->store('public/category');
@@ -73,6 +82,7 @@ class AdvertisementController extends Controller
     public function edit($id)
     {
         $ad =  Advertisement::find($id);
+        $this->authorize('edit-ad', $ad);
 
         return view('ads.edit', compact('ad'));
     }
@@ -116,6 +126,14 @@ class AdvertisementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ad = Advertisement::find($id);
+        $ad->delete();
+        return back()->with('message', 'Ad deleted successfully');
+    }
+
+    public function pendingAds()
+    {
+        $ads = Advertisement::where('user_id', auth()->user()->id)->where('published', 0)->get();
+        return  view('ads.pending', compact('ads'));
     }
 }

@@ -42,39 +42,6 @@
                     </div>
                 </div>
             @endforeach
-            <div class="col-lg-2 col-md-4 col-lg" id="card">
-
-                <div class="card-body">
-                    <a href="{{ route('category.show', $category->slug) }}" class="d-block mb-4 h-100">
-                        <img class="img-thumbnail" src="/img/icons8-plush-48.png"
-                            style=" height: 100px; background-size: cover;">
-                        <p class="">Toys</p>
-                    </a>
-
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-lg" id="card">
-
-                <div class="card-body">
-                    <a href="{{ route('category.show', $category->slug) }}" class="d-block mb-4 h-100">
-                        <img class="img-thumbnail" src="/img/icons8-soccer-ball-48.png"
-                            style=" height: 100px; background-size: cover;">
-                        <p class="">Sports</p>
-                    </a>
-
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-lg" id="card">
-
-                <div class="card-body">
-                    <a href="{{ route('category.show', $category->slug) }}" class="d-block mb-4 h-100">
-                        <img class="img-thumbnail" src="/img/icons8-retro-tv-100.png"
-                            style=" height: 100px; background-size: cover;">
-                        <p class="">Tv</p>
-                    </a>
-
-                </div>
-            </div>
         </div>
 
         <div class="container mt-5">
@@ -148,9 +115,6 @@
 
                         </div>
                     </div>
-
-
-
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleFade{{ $category->id }}" role="button"
                     data-slide="prev">
@@ -284,7 +248,6 @@
                 @endforeach
             </div>
             {{ $advertisements->links() }}
-
         </div>
     @endsection
     <style>
