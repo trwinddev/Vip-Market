@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ApiCategoryController;
-use App\Http\Controllers\Api\ApiAddressController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +15,17 @@ use App\Http\Controllers\Api\ApiAddressController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/category', [ApiCategoryController::class, 'getCategory']);
-Route::get('/subcategory', [ApiCategoryController::class, 'getSubCategory']);
-Route::get('/childcategory', [ApiCategoryController::class, 'getChildCategory']);
 
-Route::get('/country', [ApiAddressController::class, 'getCountry']);
-Route::get('/state', [ApiAddressController::class, 'getState']);
-Route::get('/city', [ApiAddressController::class, 'getCity']);
+Route::get('/category','Api\ApiCategoryController@getCategory');
+Route::get('/subcategory','Api\ApiCategoryController@getSubCategory');
+Route::get('/childcategory','Api\ApiCategoryController@getChildCategory');
+
+
+Route::get('/country','Api\AddressController@getCountry');
+Route::get('/state','Api\AddressController@getState');
+Route::get('/city','Api\AddressController@getCity');
+

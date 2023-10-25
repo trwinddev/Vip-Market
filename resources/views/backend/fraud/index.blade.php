@@ -38,10 +38,12 @@
                                                     </a>
                                                 </td>
                                                 <td>
+                                                    <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                                         data-target="#exampleModal{{ $ad->ad_id }}">
                                                         <i class="mdi mdi-delete"></i>
                                                     </button>
+                                                    <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal{{ $ad->ad_id }}"
                                                         tabindex="-1" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">

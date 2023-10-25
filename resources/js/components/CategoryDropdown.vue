@@ -7,7 +7,7 @@
                 v-model="category"
                 @change="getSubCategories()"
             >
-                <option value="">Choose category</option>
+                <option value=""> choose category</option>
                 <option
                     v-for="data in categories"
                     :value="data.id"
@@ -24,7 +24,7 @@
                 v-model="subcategory"
                 @change="getChildCategories()"
             >
-                <option value="">Choose subcategory</option>
+                <option value="">choose subcategory</option>
                 <option
                     v-for="data in subcategories"
                     :value="data.id"
@@ -57,7 +57,7 @@ export default {
             categories: [],
             subcategory: 0,
             subcategories: [],
-            childcategories: [],
+            childcategories: []
         };
     },
     mounted() {
@@ -65,30 +65,33 @@ export default {
     },
     methods: {
         getCategories() {
-            axios.get("/api/category").then((response) => {
-                this.categories = response.data;
-            });
+            axios
+                .get("/api/category")
+                .then(response => {
+                    this.categories = response.data;
+                })
+               
         },
         getSubCategories() {
             axios
                 .get("/api/subcategory", {
-                    params: { category_id: this.category },
+                    params: { category_id: this.category }
                 })
-                .then((response) => {
+                .then(response => {
                     this.subcategories = response.data;
-                });
+                })
+                
         },
         getChildCategories() {
             axios
-                .get("/api/subcategory", {
-                    params: { subcategory_id: this.subcategory },
+                .get("/api/childcategory", {
+                    params: { subcategory_id: this.subcategory }
                 })
-                .then((response) => {
+                .then(response => {
                     this.childcategories = response.data;
-                });
-        },
-    },
+                })
+                
+        }
+    }
 };
 </script>
-
-<style></style>

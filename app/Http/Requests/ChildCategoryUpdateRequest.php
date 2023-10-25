@@ -24,7 +24,6 @@ class ChildCategoryUpdateRequest extends FormRequest
     public function rules()
     {
         $id = $this->route('childcategory');
-
         return [
             'name' => 'required|unique:childcategories,name,' . $id,
             'subcategory_id' => 'required'

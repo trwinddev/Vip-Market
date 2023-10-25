@@ -6,6 +6,7 @@
                 @include('sidebar')
             </div>
             <div class="col-md-9">
+                @include('backend.inc.message')
                 <table class="table table-bordered">
                     <thead>
                         <tr>

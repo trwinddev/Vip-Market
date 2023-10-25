@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Childcategory;
 use App\Models\Advertisement;
 use App\Models\Category;
-use App\Models\Childcategory;
 use App\Models\Subcategory;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class FrontendController extends Controller
 {
@@ -34,6 +35,8 @@ class FrontendController extends Controller
 
         $advertisementWithoutFilter = $subcategorySlug->ads;
         $filterByChildCategories = $subcategorySlug->ads->unique('childcategory_id');
+        //$filterByChildCategories = Childcategory::where('subcategory_id',2)->get();
+        // dd($filterByChildCategories);
 
         $advertisements = $request->minPrice || $request->maxPrice ?
             $advertisementBasedOnFilter : $advertisementWithoutFilter;
@@ -49,7 +52,6 @@ class FrontendController extends Controller
         Subcategory $subcategorySlug,
         Childcategory $childCategorySlug,
         Request $request
-
     ) {
         $advertisementBasedOnFilter = Advertisement::where(
             'childcategory_id',
@@ -70,5 +72,18 @@ class FrontendController extends Controller
             'advertisements',
             'filterByChildCategories'
         ));
+    }
+    //show individual ads
+    public function show($id, $slug)
+    {
+        $advertisement = Advertisement::where('id', $id)->where('slug', $slug)->first();
+        return view('product.show', compact('advertisement'));
+    }
+    //show user ads
+    public function viewUserAds($id)
+    {
+        $advertisements = Advertisement::latest()->where('user_id', $id)->paginate(20);
+        $user = User::find($id);
+        return view('seller.ads', compact('advertisements', 'user'));
     }
 }

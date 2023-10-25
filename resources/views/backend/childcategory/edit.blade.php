@@ -4,12 +4,12 @@
         <div class="content-wrapper">
             <div class="row justify-content-center">
                 <div class="col-md-10">
+                    @include('backend.inc.message')
                     <h4>Update ChildCategory</h4>
                     <div class="card">
                         <div class="card-body">
                             <form class="forms-sample" action="{{ route('childcategory.update', [$childcategory->id]) }}"
-                                method="post">
-                                @csrf
+                                method="post">@csrf
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="name">Name</label>

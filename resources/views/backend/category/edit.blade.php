@@ -7,15 +7,14 @@
                     <h4>Update Category</h4>
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('category.update', [$category->id]) }}" class="forms-sample" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
+                            <form class="forms-sample" action="{{ route('category.update', [$category->id]) }}" method="post"
+                                enctype="multipart/form-data">@csrf
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" value="{{ $category->name }}"
                                         class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="Name of category">
+                                        placeholder="name of category">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>

@@ -1,17 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubcategoryController;
-use App\Http\Controllers\ChildcategoryController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\AdvertisementController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FrontendController;
-use App\Models\Category;
 use Illuminate\Support\Facades\View;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,47 +17,58 @@ Route::get('/home', function () {
     return view('home');
 });
 
-// Route::get('/auth', function () {
-//     return view('backend.admin.index');
-// });
+Route::get('/dashboard', 'DashboardController@index');
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+//admin
 
-// admin
-Route::group(['prefix' => 'auth'], function () {
+Route::group(['prefix' => 'auth', 'middleware' => 'admin'], function () {
+
     Route::get('/', function () {
         return view('backend.admin.index');
     });
-    Route::resource('/category', CategoryController::class);
-    Route::resource('/subcategory', SubcategoryController::class);
-    Route::resource('/childcategory', ChildcategoryController::class);
+
+    Route::resource('/category', 'CategoryController');
+    Route::resource('/subcategory', 'SubcategoryController');
+    Route::resource('/childcategory', 'ChildcategoryController');
+
+    //adminlisting
     Route::get('/allads', 'AdminListingController@index')->name('all.ads');
+
+    //listing reported ad
     Route::get('/reported-ads', 'FraduController@index')->name('all.reported.ads');
 });
+Route::get('/', 'FrontAdsController@index');
 
-Route::get('/', [MenuController::class, 'menu']);
 
-// ads
-Route::get('/ads/create', [AdvertisementController::class, 'create'])->name('ads.create')->middleware('auth');
-Route::post('/ads/store', [AdvertisementController::class, 'store'])->name('ads.store')->middleware('auth');
-Route::get('/ads', [AdvertisementController::class, 'index'])->name('ads.index')->middleware('auth');
-Route::get('/ads/edit/{id}', [AdvertisementController::class, 'edit'])->name('ads.edit')->middleware('auth');
-Route::put('/ads/update/{id}', [AdvertisementController::class, 'update'])->name('ads.update')->middleware('auth');
+//ads
+Route::get('/ads/create', 'AdvertisementController@create')->name('ads.create')->middleware('auth');;
+Route::post('/ads/store', 'AdvertisementController@store')->middleware('auth')->name('ads.store');
+Route::get('/ads', 'AdvertisementController@index')->name('ads.index')->middleware('auth');
+Route::get('/ads/{id}/edit', 'AdvertisementController@edit')->name('ads.edit')->middleware('auth');
+Route::put('/ads/{id}/update', 'AdvertisementController@update')->name('ads.update')->middleware('auth');
+Route::delete('/ads/{id}/delete', 'AdvertisementController@destroy')->name('ads.destroy')->middleware('auth');
+
+Route::get('/ad-pending', 'AdvertisementController@pendingAds')->name('pending.ad');
 
 //profile
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('auth');
 Route::post('/profile', 'ProfileController@updateProfile')->name('update.profile')->middleware('auth');
+
 
 //user ads
 Route::get('/ads/{userId}/view', 'FrontendController@viewUserAds')->name('show.user.ads');
-
 //frontend
+
 Route::get(
     '/product/{categorySlug}',
-    [FrontendController::class, 'findBasedOnCategory']
-)->name('category.show');
+    'FrontendController@findBasedOnCategory'
+)
+    ->name('category.show');
+
 Route::get('/product/{categorySlug}/{subcategorySlug}', 'FrontendController@findBasedOnSubcategory')
     ->name('subcategory.show');
+
+
 Route::get(
     '/product/{categorySlug}/{subcategorySlug}/{childCategorySlug}',
     'FrontendController@findBasedOnChildcategory'
@@ -82,6 +83,13 @@ Route::get('messages', 'SendMessageController@index')->name('messages')->middlew
 Route::get('/users', 'SendMessageController@chatWithThisUser');
 Route::get('/message/user/{id}', 'SendMessageController@showMessages');
 Route::post('/start-conversation', 'SendMessageController@startConversation');
+
+
+//login with facebook
+Route::get('auth/facebook', 'SocialLoginController@facebookRedirect');
+
+Route::get('auth/facebook/callback', 'SocialLoginController@loginWithFacebook');
+
 
 //Save ad
 Route::post('/ad/save', 'SaveAdController@saveAd');

@@ -1,14 +1,21 @@
 @extends('layouts.app')
 @section('content')
-    <div>
-        <example-component />
-    </div>
     <div class="container">
         <div class="row ">
             <div class="col-md-3">
                 @include('sidebar')
             </div>
             <div class="col-md-9">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        @foreach ($errors->all() as $errorMessage)
+                            <li>{{ $errorMessage }}</li>
+                        @endforeach
+                    </div>
+                @endif
                 <form action="{{ route('ads.store') }}" method="post" enctype="multipart/form-data">@csrf
                     <div class="card">
                         <div class="card-header text-white" style="background-color: red">
@@ -37,10 +44,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea name="description" class="form-control"></textarea>
+                                <textarea name="description" id="mytextarea" class="form-control">
+                                </textarea>
                             </div>
                             <div class="form-group">
-                                <label for="description">Price</label>
+                                <label for="description">Price(USD)</label>
                                 <input type="text" name="price" class="form-control">
                             </div>
                             <div class="form-group">
@@ -84,4 +92,5 @@
             </div>
         </div>
     </div>
+
 @endsection

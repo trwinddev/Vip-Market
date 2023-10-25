@@ -6,10 +6,14 @@ window.axios = require("axios");
 import VueChatScroll from "vue-chat-scroll";
 Vue.use(VueChatScroll);
 
-Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue").default
-);
+import Toaster from "v-toaster";
+
+// You need a specific loader for CSS files like https://github.com/webpack/css-loader
+import "v-toaster/dist/v-toaster.css";
+
+// optional set default imeout, the default is 10000 (10 seconds).
+Vue.use(Toaster, { timeout: 5000 });
+
 Vue.component(
     "image-preview",
     require("./components/imagepreview/FeatureImage.vue").default
@@ -24,7 +28,7 @@ Vue.component(
 );
 Vue.component(
     "category-dropdown",
-    require("./components/CategoryDropdown.vue").default
+    require("./components/CategoryDropDown.vue").default
 );
 Vue.component(
     "country-dropdown",
@@ -39,5 +43,5 @@ Vue.component(
 Vue.component("save-ad", require("./components/SaveAd.vue").default);
 
 const app = new Vue({
-    el: "#app",
+    el: "#app"
 });

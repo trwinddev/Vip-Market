@@ -2,6 +2,7 @@
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
+            @include('backend.inc.message')
             <h4>Manage SubCategory</h4>
             <div class="row justify-content-center">
                 <div class="col-lg-12 grid-margin stretch-card">
@@ -31,18 +32,19 @@
                                                     </a>
                                                 </td>
                                                 <td>
+                                                    <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
                                                         data-target="#exampleModal{{ $subcategory->id }}">
                                                         <i class="mdi mdi-delete"></i>
                                                     </button>
+                                                    <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal{{ $subcategory->id }}"
                                                         tabindex="-1" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <form
                                                                 action="{{ route('subcategory.destroy', $subcategory->id) }}"
-                                                                method="post">
-                                                                @csrf
+                                                                method="post">@csrf
                                                                 @method('DELETE')
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -61,7 +63,8 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-dismiss="modal">Cancel</button>
                                                                         <button type="submit" class="btn btn-danger">Yes,
-                                                                            Delete it</button>
+                                                                            Delete
+                                                                            it</button>
                                                                     </div>
                                                                 </div>
                                                             </form>
@@ -79,4 +82,41 @@
                     </div>
                 </div>
             </div>
+            <style>
+                td.categrory_1 {
+                    background-color: aliceblue;
+                }
+
+                td.categrory_2 {
+                    background-color: bisque;
+                }
+
+                td.categrory_3 {
+                    background-color: thistle;
+                }
+
+                td.categrory_4 {
+                    background-color: tomato;
+                }
+
+                td.categrory_5 {
+                    background-color: gray;
+                }
+
+                td.categrory_6 {
+                    background-color: unset;
+                }
+
+                td.categrory_7 {
+                    background-color: springgreen;
+                }
+
+                td.categrory_8 {
+                    background-color: orchid;
+                }
+
+                td.categrory_9 {
+                    background-color: pink;
+                }
+            </style>
         @endsection

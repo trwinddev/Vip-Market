@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Childcategory;
-use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use App\Models\Childcategory;
+use App\Models\Category;
+use App\Models\Subcategory;
 
 class ApiCategoryController extends Controller
 {

@@ -2,6 +2,7 @@
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
+            @include('backend.inc.message')
             <h4>Manage Advertisements</h4>
             <div class="row justify-content-center">
                 <div class="col-lg-12 grid-margin stretch-card">
@@ -31,9 +32,7 @@
                                                     <a target="_blank"
                                                         href="{{ route('show.user.ads', $ad->user->id) }}">{{ $ad->user->name }}</a>
                                                 </td>
-                                                <td>
-                                                    <img src="{{ Storage::url($ad->feature_image) }}">
-                                                </td>
+                                                <td><img src="{{ Storage::url($ad->feature_image) }}"></td>
                                                 <td>{{ $ad->name }}</td>
                                                 <td>
                                                     <a target="_blank"
@@ -42,10 +41,12 @@
                                                     </a>
                                                 </td>
                                                 <td>
+                                                    <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                                         data-target="#exampleModal{{ $ad->id }}">
                                                         <i class="mdi mdi-delete"></i>
                                                     </button>
+                                                    <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal{{ $ad->id }}"
                                                         tabindex="-1" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">

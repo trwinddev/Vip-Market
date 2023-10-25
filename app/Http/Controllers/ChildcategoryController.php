@@ -7,7 +7,6 @@ use App\Http\Requests\ChildcategoryRequest;
 use App\Http\Requests\ChildCategoryUpdateRequest;
 use App\Models\Childcategory;
 use Illuminate\Support\Str;
-
 class ChildcategoryController extends Controller
 {
     /**
@@ -17,8 +16,8 @@ class ChildcategoryController extends Controller
      */
     public function index()
     {
-        $childcategories = Childcategory::orderBy('subcategory_id')->get();
-        return view('backend.childcategory.index', compact('childcategories'));
+       $childcategories = Childcategory::orderBy('subcategory_id')->get();
+       return view('backend.childcategory.index',compact('childcategories'));
     }
 
     /**
@@ -40,11 +39,12 @@ class ChildcategoryController extends Controller
     public function store(ChildcategoryRequest $request)
     {
         Childcategory::create([
-            'name' => $name = $request->name,
-            'subcategory_id' => $request->subcategory_id,
-            'slug' => Str::slug($name),
+            'name'=>$name=$request->name,
+            'subcategory_id'=>$request->subcategory_id,
+            'slug'=>Str::slug($name),
         ]);
-        return back()->with('message', 'Subcategory updated');
+        return back()
+            ->with('message','Subcategory updated');
     }
 
     /**
@@ -80,11 +80,11 @@ class ChildcategoryController extends Controller
     public function update(ChildCategoryUpdateRequest $request, $id)
     {
         Childcategory::find($id)->update([
-            'name' => $request->name,
-            'subcategory_id' => $request->subcategory_id
+            'name'=>$request->name,
+            'subcategory_id'=>$request->subcategory_id
         ]);
         return redirect()->route('childcategory.index')
-            ->with('message', 'Childcategory updated');
+            ->with('message','Chuldcategory updated');
     }
 
     /**
@@ -96,6 +96,6 @@ class ChildcategoryController extends Controller
     public function destroy($id)
     {
         Childcategory::find($id)->delete();
-        return back()->with('message', 'Childcategory removed!');
+        return back()->with('message','Childcategory removed!');
     }
 }

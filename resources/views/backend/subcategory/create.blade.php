@@ -4,17 +4,16 @@
         <div class="content-wrapper">
             <div class="row justify-content-center">
                 <div class="col-md-10">
+                    @include('backend.inc.message')
                     <h4>Add SubCategory</h4>
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('category.store') }}" class="forms-sample" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
+                            <form class="forms-sample" action="{{ route('subcategory.store') }}" method="post">@csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name"
                                         class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="Name of category">
+                                        placeholder="name of subcategory">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>
@@ -37,7 +36,6 @@
                                             <strong>
                                                 {{ $message }}
                                             </strong>
-
                                         </span>
                                     @enderror
                                 </div>

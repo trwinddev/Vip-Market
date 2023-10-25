@@ -31,6 +31,7 @@ class AdsFormUpdateRequest extends FormRequest
             'price' => "required|regex:/^\d+(\.\d{1,2})?$/",
             'price_status' => 'required',
             'product_condition' => 'required',
+            // 'phone_number'=>'numeric'
         ];
     }
 }
