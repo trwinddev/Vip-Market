@@ -24,8 +24,8 @@ class ChildcategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:childcategories,name',
-            'subcategory_id'=>'required'
+            'name' => 'required|unique:childcategories,name',
+            'subcategory_id' => 'required'
         ];
     }
 }

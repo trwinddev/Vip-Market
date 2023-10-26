@@ -3,7 +3,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             @include('backend.inc.message')
-            <h4>Manage Advertisements</h4>
+            <h4>Manage posts</h4>
             <div class="row justify-content-center">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">

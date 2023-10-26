@@ -41,9 +41,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-danger w-100 mb-3">Login</button>
+                                    <button type="submit" class="btn w-100 mb-3"
+                                        style="background-color: orangered; color: white;">Login</button>
                                     <a class="btn"
-                                        style="background: #3B5499; color: #ffffff; width: 100%; text-align: center; display: block; border-radius:3px;">
+                                        style="background: #3B5499; color: #ffffff; width: 100%; text-align: center; display: block; border-radius:3px;"
+                                        href="{{ url('auth/facebook') }}">
                                         Login with Facebook
                                     </a>
                                 </div>

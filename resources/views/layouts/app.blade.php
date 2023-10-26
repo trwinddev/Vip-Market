@@ -8,14 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Vip Market</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,9 +34,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-danger shadow-sm text-white">
+        <nav class="navbar navbar-expand-md shadow-sm text-white navbar-custom">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="color:#fff;">
+                <a class="navbar-brand" href="{{ url('/') }}"
+                    style="color:#fff; font-weight: 600; font-size: 24px">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -80,18 +83,18 @@
                                             {{ __('Dashboard') }}
                                         </a>
                                     @else
-                                        <a class="dropdown-item" href="{{ url('ads') }}" style="color:blue">
-                                            <i class="fas fa-camera" style="color:blue"></i> {{ __('Ads') }}
+                                        <a class="dropdown-item" href="{{ url('ads') }}" style="">
+                                            <i class="fas fa-camera" style="padding-right: 5px"></i> {{ __('Posts') }}
                                         </a>
-                                        <a class="dropdown-item" href="{{ url('messages') }}" style="color:blue">
-                                            <i class="fas fa-envelope" style="color:blue"></i> {{ __('Messages') }}
+                                        <a class="dropdown-item" href="{{ url('messages') }}" style="">
+                                            <i class="fas fa-envelope" style="padding-right: 5px"></i> {{ __('Messages') }}
                                         </a>
                                     @endif
-                                    <a style="color:blue" class="dropdown-item" href="{{ route('logout') }}"
+                                    <a style="" class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();"
-                                        style="color:black!important;" style="color:blue">
-                                        <i class="fas fa-user-lock" style="color:blue"></i> {{ __('Logout') }}
+                                        style="color:black!important;" style="">
+                                        <i class="fas fa-user-lock" style="padding-right: 5px"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -153,13 +156,18 @@
                 </ul>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="py-4 bg-custom">
             @yield('content')
         </main>
     </div>
     <style>
         body {
             overflow-x: hidden;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .navbar-custom {
+            background: linear-gradient(-180deg, #f53d2d, #f63);
         }
 
         .navbar-nav {
@@ -168,6 +176,14 @@
 
         .dropdown:hover>.dropdown-menu {
             display: block;
+        }
+
+        .bg-custom {
+            background-color: #F5F5F5;
+        }
+
+        .nav-item {
+            font-weight: 600;
         }
 
         @media only screen and(max-width:9991px) {
@@ -215,14 +231,15 @@
             }
 
             .vertical-menu a:hover {
-                background-color: red;
+                background-color: orangered;
                 color: #fff;
             }
 
             .vertical-menu a.active {
-                background-color: red;
+                background-color: orangered;
                 color: #fff;
             }
+        }
     </style>
 </body>
 

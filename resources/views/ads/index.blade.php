@@ -51,7 +51,7 @@
                                     </div>
                                 </td>
                                 <td>{{ $ad->name }}</td>
-                                <td style="color: blue;">USD {{ $ad->price }}</td>
+                                <td style="color: blue;"> {{ $ad->price }}$</td>
                                 <td>
                                     @if ($ad->published == 1)
                                         <span class="badge badge-success">Published</span>

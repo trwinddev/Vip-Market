@@ -3,7 +3,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             @include('backend.inc.message')
-            <h4>Reported Advertisements</h4>
+            <h4>Reported posts</h4>
             <div class="row justify-content-center">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
@@ -12,7 +12,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Name of ad</th>
+                                            <th>Name of post</th>
                                             <th>Email </th>
                                             <th>Reason</th>
                                             <th>Message</th>
@@ -23,7 +23,7 @@
                                     <tbody>
                                         @forelse($ads as $ad)
                                             <tr>
-                                                <td>{{ $ad->fraudad->name }}</td>
+                                                <td>{{ $ad->fraudad?->name }}</td>
                                                 <td>
                                                     {{ $ad->email }}
                                                 </td>

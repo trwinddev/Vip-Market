@@ -23,7 +23,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-danger w-100 mb-3">Send Password Reset
+                                    <button type="submit" class="btn w-100 mb-3 "
+                                        style="background-color: orangered; color: white;">Send Password Reset
                                         Link</button>
                                 </div>
                             </form>

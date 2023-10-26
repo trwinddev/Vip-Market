@@ -18,8 +18,8 @@
                 @endif
                 <form action="{{ route('ads.store') }}" method="post" enctype="multipart/form-data">@csrf
                     <div class="card">
-                        <div class="card-header text-white" style="background-color: red">
-                            Post your ad.
+                        <div class="card-header text-white" style="background-color: orangered">
+                            Create new post
                         </div>
                         <div class="card-body">
                             <label for="file" class="mt-2"><b>Upload 3 Images</b></label>
@@ -48,11 +48,11 @@
                                 </textarea>
                             </div>
                             <div class="form-group">
-                                <label for="description">Price(USD)</label>
+                                <label for="description">Price (USD)</label>
                                 <input type="text" name="price" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="description">Price staus</label>
+                                <label for="description">Price status</label>
                                 <select class="form-control" name="price_status">
                                     <option value="negoitable">Negotiable</option>
                                     <option value="fixed">Fixed</option>
@@ -63,7 +63,7 @@
                                 <select class="form-control" name="product_condition">
                                     <option value="">Select </option>
                                     <option value="likenew">Looks like New</option>
-                                    <option value="heavilyused">Heavily Used</option>
+                                    <option value="heavilyused">Used</option>
                                     <option value="new">New</option>
                                 </select>
                             </div>
@@ -71,20 +71,21 @@
                                 <label for="location">Listing Location</label>
                                 <input type="text" class="form-control" name="listing_location">
                             </div>
-                            <label for="file" class="mt-2"><b>Choose address</b></label>
+                            {{-- <label for="file" class="mt-2"><b>Choose address</b></label>
                             <div class="form-inline form-group mt-1">
                                 <country-dropdown />
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="location">Seller contact number</label>
                                 <input type="number" class="form-control" name="phone_number">
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="location">Demo link of product(ie:youtube)</label>
                                 <input type="text" class="form-control" name="link">
-                            </div>
+                            </div> --}}
                             <div class="form-group">
-                                <button class="btn btn-danger float-right" type="submit">Publish</button>
+                                <button class="btn btn-danger float-right" type="submit"
+                                    style="background-color: orangered">Publish</button>
                             </div>
                         </div>
                     </div>

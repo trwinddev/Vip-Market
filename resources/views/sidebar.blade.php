@@ -11,22 +11,22 @@
         @endif
         <p class="text-center"><b>{{ auth()->user()->name }}</b></p>
     </div>
-    <hr style="border:2px solid blue;">
+    <hr style="border:2px solid orangered;">
     <div class="vertical-menu">
-        <i class="fas fa-tachometer-alt-slowest"></i> <a href="#"><i class="fas fa-tasks"></i> Dashboard</a>
+        {{-- <i class="fas fa-tachometer-alt-slowest"></i> <a href="#"><i class="fas fa-tasks pr-1"></i> Dashboard</a> --}}
         <a href="{{ route('profile') }}" class="{{ request()->is('profile') ? 'active' : '' }}"><i
-                class="fas fa-user"></i>
-            Profiles</a>
+                class="fas fa-user pr-2"></i>
+            Profile</a>
         <a href="{{ route('ads.create') }}" class="{{ request()->is('ads/create') ? 'active' : '' }}"><i
-                class="fas fa-cloud-upload-alt"></i> Create ads</a>
+                class="fas fa-cloud-upload-alt pr-1"></i> Create post</a>
         <a href="{{ route('ads.index') }}" class="{{ request()->is('ads') ? 'active' : '' }}"><i
-                class="fas fa-images"></i>
-            Published ads</a>
+                class="fas fa-images pr-2"></i>
+            Published post</a>
         <a href="{{ route('pending.ad') }}" class="{{ request()->is('ad-pending') ? 'active' : '' }}"><i
-                class="fas fa-ban"></i> Pending ads</a>
+                class="fas fa-ban pr-2"></i> Pending post</a>
         <a href="{{ route('saved.ad') }}" class="{{ request()->is('saved-ads') ? 'active' : '' }}"><i
-                class="fas fa-heart"></i> Saved ads</a>
+                class="fas fa-heart pr-2"></i> Saved post</a>
         <a href="{{ route('messages') }}" class="{{ request()->is('messages') ? 'active' : '' }}"><i
-                class="fas fa-envelope"></i> Message</a>
+                class="fas fa-envelope pr-2"></i> Message</a>
     </div>
 </div>

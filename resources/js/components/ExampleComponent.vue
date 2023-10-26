@@ -1,11 +1,11 @@
 <template>
-  <div>Hello World.</div>
+    <div>Hello World.</div>
 </template>
 
 <script>
-  export default {
+export default {
     mounted() {
-      console.log("Example component mounted");
-    }
-  };
+        console.log("Example component mounted");
+    },
+};
 </script>

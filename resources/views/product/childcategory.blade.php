@@ -4,7 +4,8 @@
         <div class="row ">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header text-white text-center" style="background-color: red;">Filter ::</div>
+                    <div class="card-header text-white text-center" style="background-color: orangered;">Filter <i
+                            class="fa fa-filter" aria-hidden="true"></i></div>
                     <div class="card-body">
                         @foreach ($filterByChildCategories as $filterchildcategory)
                             <p>
@@ -28,7 +29,8 @@
                                 <input type="text" name="maxPrice" class="form-control">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Search</button>
+                                <button type="submit" class="btn"
+                                    style="background-color: orangered; color: white">Search</button>
                             </div>
                         </div>
                     </div>
@@ -41,13 +43,13 @@
                         <div class="col-3">
                             <a href="{{ route('product.view', [$advertisement->id, $advertisement->slug]) }}">
                                 <img src="{{ Storage::url($advertisement->feature_image) }}" class="img-thumbnail">
-                                <p class="text-center  card-footer" style="color: blue;">
+                                <p class="text-center  card-footer" style="color:  #007BFF;">
                                     {{ $advertisement->name }}/USD {{ $advertisement->price }}
                                 </p>
                             </a>
                         </div>
                     @empty
-                        Sorry,we are unable to find product based on this cantegory
+                        Sorry,we are unable to find product based on this category
                     @endforelse
                 </div>
             </div>
