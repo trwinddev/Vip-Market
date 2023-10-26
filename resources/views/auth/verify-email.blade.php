@@ -10,7 +10,8 @@
                     <div class="card-body">
                         <form action="{{ route('verification.send') }}" method="post">
                             @csrf
-                            <button type="submit" class="btn btn-danger mb-3">Verify your email</button>
+                            <button type="submit" class="btn mb-3"
+                                style="background-color: orangered; color: white;">Verify your email</button>
                         </form>
                     </div>
                 </div>

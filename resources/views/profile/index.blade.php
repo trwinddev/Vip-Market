@@ -13,7 +13,7 @@
                 @endif
                 <form action="{{ route('update.profile') }}" method="post" enctype="multipart/form-data">@csrf
                     <div class="card">
-                        <div class="card-header text-white" style="background-color: red">Update profile</div>
+                        <div class="card-header text-white" style="background-color: orangered">Update profile</div>
 
                         <div class="card-body">
                             <div class="form-group">
@@ -31,7 +31,8 @@
                                 <input type="file" name="image" class="form-control">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Update profile</button>
+                                <button type="submit" class="btn btn-submit"
+                                    style="background-color: orangered; color: white">Update profile</button>
                             </div>
                         </div>
                     </div>
@@ -44,7 +45,7 @@
                 <form action="{{ route('user-password.update') }}" method="post">@csrf
                     @method('PUT')
                     <div class="card">
-                        <div class="card-header text-white" style="background-color: red">Change password</div>
+                        <div class="card-header text-white" style="background-color: orangered">Change password</div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Current pasword</label>
@@ -68,7 +69,9 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-danger" type="submit">Update password</button>
+                                <button class="btn btn-submit" style="background-color: orangered; color: white"
+                                    type="submit">Update
+                                    password</button>
                             </div>
                         </div>
                     </div>

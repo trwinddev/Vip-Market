@@ -54,15 +54,14 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('all.ads') }}">
-                    <i class="mdi mdi-account-multiple
-                    "></i>
-                    <span class="menu-title"> All advertisements</span>
+                    <i class="mdi mdi-account-multiple"></i>
+                    <span class="menu-title p-2">All post</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('all.reported.ads') }}">
-                    <i class="mdi mdi-chart-pie menu-icon"></i>
-                    <span class="menu-title">Reported ads</span>
+                    <i class="mdi mdi-chart-pie"></i>
+                    <span class="menu-title p-2">Reported posts</span>
                 </a>
             </li>
             {{-- <li class="nav-item">

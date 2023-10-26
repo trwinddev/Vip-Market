@@ -14,7 +14,7 @@
                                     <label for="name">Name</label>
                                     <input type="text" name="name" value="{{ $category->name }}"
                                         class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="name of category">
+                                        placeholder="Name of category">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>

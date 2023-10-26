@@ -53,7 +53,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-danger w-100 mb-3">Register</button>
+                                    <button type="submit" class="btn w-100 mb-3"
+                                        style="background-color: orangered; color: white;">Register</button>
                                     <a class="btn"
                                         style="background: #3B5499; color: #ffffff; width: 100%; text-align: center; display: block; border-radius:3px;">
                                         Login with Facebook

@@ -13,7 +13,7 @@
                                     <label for="name">Name</label>
                                     <input type="text" name="name"
                                         class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="name of subcategory">
+                                        placeholder="Name of subcategory">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>

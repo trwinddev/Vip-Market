@@ -27,7 +27,7 @@ class AdsFormUpdateRequest extends FormRequest
             'name' => 'required|min:3|max:120',
             'description' => 'required|min:3',
             'category_id' => 'required',
-            'country_id' => 'required',
+            // 'country_id' => 'required',
             'price' => "required|regex:/^\d+(\.\d{1,2})?$/",
             'price_status' => 'required',
             'product_condition' => 'required',

@@ -34,7 +34,8 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="token" value="{{ request()->route('token') }}">
-                                    <button type="submit" class="btn btn-danger w-100">Reset Password</button>
+                                    <button type="submit" class="btn w-100"
+                                        style="background-color: orangered; color: white;">Reset Password</button>
                                 </div>
                             </form>
                         </div>

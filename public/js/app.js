@@ -2303,14 +2303,14 @@ __webpack_require__.r(__webpack_exports__);
     return {
       users: [],
       messages: [],
-      selectedUserId: '',
-      body: '',
+      selectedUserId: "",
+      body: "",
       moment: moment__WEBPACK_IMPORTED_MODULE_0___default.a
     };
   },
   mounted: function mounted() {
     var _this = this;
-    axios.get('/users').then(function (response) {
+    axios.get("/users").then(function (response) {
       _this.users = response.data;
     });
     setInterval(function () {
@@ -2320,27 +2320,27 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showMessage: function showMessage(userId) {
       var _this2 = this;
-      axios.get('/message/user/' + userId).then(function (response) {
+      axios.get("/message/user/" + userId).then(function (response) {
         _this2.messages = response.data;
         _this2.selectedUserId = userId;
       });
     },
     sendMessage: function sendMessage() {
       var _this3 = this;
-      if (this.body == '') {
-        alert('Please write your message');
+      if (this.body == "") {
+        alert("Please write your message");
         return;
       }
-      if (this.selectedUserId == '') {
-        alert('Please select the user');
+      if (this.selectedUserId == "") {
+        alert("Please select the user");
         return;
       }
-      axios.post('/start-conversation', {
+      axios.post("/start-conversation", {
         body: this.body,
         receiverId: this.selectedUserId
       }).then(function (response) {
         _this3.messages.push(response.data);
-        _this3.body = '';
+        _this3.body = "";
       });
     }
   }
@@ -2369,20 +2369,20 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendMessage: function sendMessage() {
       var _this = this;
-      if (this.body == '') {
+      if (this.body == "") {
         //alert('please write your message')
-        this.$toaster.warning('please write your message.', {
+        this.$toaster.warning("please write your message.", {
           timeout: 8000
         });
         return;
       }
-      axios.post('/send/message', {
+      axios.post("/send/message", {
         body: this.body,
         receiverId: this.receiverId,
         userId: this.userId,
         adId: this.adId
       }).then(function (response) {
-        _this.body = '';
+        _this.body = "";
         _this.successMessage = true, _this.showViewConversationOnSuccess = false;
       });
     }
@@ -2401,7 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['adId', 'userId'],
+  props: ["adId", "userId"],
   data: function data() {
     return {
       saveBtn: true
@@ -2410,16 +2410,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     saveAd: function saveAd() {
       var _this = this;
-      axios.post('/ad/save', {
+      axios.post("/ad/save", {
         adId: this.adId,
         userId: this.userId
       }).then(function (response) {
         _this.saveBtn = false;
-        _this.$toaster.success('This ad is saved in your list.', {
+        _this.$toaster.success("This ad is saved in your list.", {
           timeout: 8000
         });
       })["catch"](function (err) {
-        alert('Error!');
+        alert("Error!");
       });
     }
   }
@@ -2437,7 +2437,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['phoneNumber'],
+  props: ["phoneNumber"],
   data: function data() {
     return {
       showBtn: true,
@@ -2448,7 +2448,7 @@ __webpack_require__.r(__webpack_exports__);
     showPhoneBtn: function showPhoneBtn() {
       this.showNumber = true;
       this.showBtn = false;
-      this.$toaster.info('Seller contact number displayed.', {
+      this.$toaster.info("Seller contact number displayed.", {
         timeout: 2000
       });
     }
@@ -2469,7 +2469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      url: ''
+      url: ""
     };
   },
   methods: {
@@ -2494,7 +2494,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      url: ''
+      url: ""
     };
   },
   methods: {
@@ -2519,7 +2519,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      url: ''
+      url: ""
     };
   },
   methods: {
@@ -2578,7 +2578,7 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v(" choose country")]), _vm._v(" "), _vm._l(_vm.countries, function (data) {
+  }, [_vm._v("choose country")]), _vm._v(" "), _vm._l(_vm.countries, function (data) {
     return _c("option", {
       key: data.id,
       domProps: {
@@ -2663,9 +2663,13 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "form-inline form-group mt-1"
+    staticClass: "container mt-2"
+  }, [_c("div", {
+    staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-4"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("select", {
     directives: [{
       name: "model",
@@ -2694,15 +2698,17 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v(" choose category")]), _vm._v(" "), _vm._l(_vm.categories, function (data) {
+  }, [_vm._v("Select category")]), _vm._v(" "), _vm._l(_vm.categories, function (data) {
     return _c("option", {
       key: data.id,
       domProps: {
         value: data.id
       }
-    }, [_vm._v("\n                " + _vm._s(data.name) + "\n            ")]);
-  })], 2)]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                        " + _vm._s(data.name) + "\n                    ")]);
+  })], 2)])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("select", {
     directives: [{
       name: "model",
@@ -2731,15 +2737,17 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v("choose subcategory")]), _vm._v(" "), _vm._l(_vm.subcategories, function (data) {
+  }, [_vm._v("Select subcategory")]), _vm._v(" "), _vm._l(_vm.subcategories, function (data) {
     return _c("option", {
       key: data.id,
       domProps: {
         value: data.id
       }
-    }, [_vm._v("\n                " + _vm._s(data.name) + "\n            ")]);
-  })], 2)]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                        " + _vm._s(data.name) + "\n                    ")]);
+  })], 2)])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("select", {
     staticClass: "form-control",
     attrs: {
@@ -2749,14 +2757,14 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v("choose childcategory")]), _vm._v(" "), _vm._l(_vm.childcategories, function (data) {
+  }, [_vm._v("Select childcategory")]), _vm._v(" "), _vm._l(_vm.childcategories, function (data) {
     return _c("option", {
       key: data.id,
       domProps: {
         value: data.id
       }
-    }, [_vm._v("\n                " + _vm._s(data.name) + "\n            ")]);
-  })], 2)])]);
+    }, [_vm._v("\n                        " + _vm._s(data.name) + "\n                    ")]);
+  })], 2)])])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -2825,7 +2833,7 @@ var render = function render() {
         smooth: true,
         scrollonremoved: true
       },
-      expression: "{always: false, smooth: true, scrollonremoved:true}"
+      expression: "{\n                    always: false,\n                    smooth: true,\n                    scrollonremoved: true,\n                }"
     }],
     staticClass: "card-body chat-msg"
   }, _vm._l(_vm.messages, function (message, index) {
@@ -2835,14 +2843,14 @@ var render = function render() {
     }, [message.selfOwned ? _c("li", {
       staticClass: "sender clearfix"
     }, [message.user.avatar ? _c("span", {
-      staticClass: "chat-img left clearfix mx-2"
+      staticClass: "chat-img right clearfix mx-2"
     }, [_c("img", {
       attrs: {
         src: "/storage/" + message.user.avatar.substring(7),
         width: "60"
       }
     })]) : _c("span", {
-      staticClass: "chat-img left clearfix mx-2"
+      staticClass: "chat-img right clearfix mx-2"
     }, [_c("img", {
       attrs: {
         src: "/img/man.jpg",
@@ -2854,11 +2862,11 @@ var render = function render() {
       staticClass: "header clearfix"
     }, [_c("strong", {
       staticClass: "primary-font"
-    }, [_vm._v("\n                                        \n                                 " + _vm._s(message.user.name) + "\n                                ")]), _vm._v(" "), _c("small", {
+    }, [_vm._v("\n                                    " + _vm._s(message.user.name) + "\n                                ")]), _vm._v(" "), _c("small", {
       staticClass: "right text-muted"
     }, [_c("span", {
       staticClass: "glyphicon glyphicon-time"
-    }), _vm._v("\n                                   " + _vm._s(_vm.moment(message.created_at).format("DD-MM-YYYY")) + "\n\n                                    ")])]), _vm._v(" "), message.ads ? _c("p", {
+    }), _vm._v("\n                                    " + _vm._s(_vm.moment(message.created_at).format("DD-MM-YYYY")) + "\n                                ")])]), _vm._v(" "), message.ads ? _c("p", {
       staticClass: "text-center"
     }, [_c("a", {
       attrs: {
@@ -2870,17 +2878,17 @@ var render = function render() {
         src: "/storage/" + message.ads.feature_image.substring(7),
         width: "120"
       }
-    })])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._v("\n                            \n               \n                             " + _vm._s(message.body) + "\n\n                            ")])])]) : _c("li", {
+    })])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._v("\n                                " + _vm._s(message.body) + "\n                            ")])])]) : _c("li", {
       staticClass: "buyer clearfix"
     }, [message.user.avatar ? _c("span", {
-      staticClass: "chat-img right clearfix mx-2"
+      staticClass: "chat-img left clearfix mx-2"
     }, [_c("img", {
       attrs: {
         src: "/storage/" + message.user.avatar.substring(7),
         width: "60"
       }
     })]) : _c("span", {
-      staticClass: "chat-img right clearfix mx-2"
+      staticClass: "chat-img left clearfix mx-2"
     }, [_c("img", {
       attrs: {
         src: "/img/man.jpg",
@@ -2894,9 +2902,9 @@ var render = function render() {
       staticClass: "left text-muted"
     }, [_c("span", {
       staticClass: "glyphicon glyphicon-time"
-    }), _vm._v("   " + _vm._s(_vm.moment(message.created_at).format("DD-MM-YYYY")))]), _vm._v(" "), _c("strong", {
+    }), _vm._v("\n                                    " + _vm._s(_vm.moment(message.created_at).format("DD-MM-YYYY")))]), _vm._v(" "), _c("strong", {
       staticClass: "right primary-font"
-    }, [_vm._v("\n                                   " + _vm._s(message.user.name) + "\n                                ")])]), _vm._v(" "), message.ads ? _c("p", {
+    }, [_vm._v("\n                                    " + _vm._s(message.user.name) + "\n                                ")])]), _vm._v(" "), message.ads ? _c("p", {
       staticClass: "text-center"
     }, [_c("a", {
       attrs: {
@@ -2908,7 +2916,7 @@ var render = function render() {
         src: "/storage/" + message.ads.feature_image.substring(7),
         width: "120"
       }
-    })])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._v("\n                                       \n                              " + _vm._s(message.body) + "\n                            ")])])]), _vm._v(" "), _vm._m(1, true)]);
+    })])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._v("\n                                " + _vm._s(message.body) + "\n                            ")])])]), _vm._v(" "), _vm._m(1, true)]);
   }), 0) : _c("div", {
     staticStyle: {
       "min-height": "250px"
@@ -3034,7 +3042,7 @@ var render = function render() {
     staticStyle: {
       color: "green"
     }
-  }, [_vm._v("Your message has been sent.")]) : _vm._e()]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                        Your message has been sent.\n                    ")]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "modal-footer"
   }, [_c("button", {
     staticClass: "btn btn-secondary",
@@ -3067,7 +3075,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fas fa-envelope"
-  }), _vm._v("   Send Message\n    ")]);
+  }), _vm._v(" Send Message\n        ")]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -3082,7 +3090,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fas fa-paper-plane"
-  }), _vm._v(" View Conversation\n    ")])]);
+  }), _vm._v(" View Conversation\n            ")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -3128,9 +3136,9 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fas fa-heart"
-  }), _vm._v("\n      Save this ad \n    ")]) : _c("p", {
+  }), _vm._v("\n        Save this ad\n    ")]) : _c("p", {
     staticClass: "alert alert-success"
-  }, [_vm._v("\n    Advertisement saved !\n    ")])]);
+  }, [_vm._v("Advertisement saved !")])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3162,7 +3170,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fas fa-phone"
-  }), _vm._v(" Phone Number")]) : _vm._e()]), _vm._v(" "), _vm.showNumber ? _c("p", [_c("button", {
+  }), _vm._v(" Phone Number\n        ")]) : _vm._e()]), _vm._v(" "), _vm.showNumber ? _c("p", [_c("button", {
     staticClass: "btn btn-danger"
   }, [_vm._v(_vm._s(_vm.phoneNumber))])]) : _vm._e()]);
 };
@@ -7707,7 +7715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.chat\n{\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n.chat li\n{\n    margin-bottom: 40px;\n    padding-bottom: 5px;\n    margin-top: 10px;\n    width: 80%;\n    height: 10px;\n}\n.chat li .chat-body p\n{\n    margin: 0;\n}\n.chat-msg\n{\n    overflow-y: scroll;\n    height: 350px;\n}\n.chat-msg .chat-img\n{\n    width: 50px;\n    height: 50px;\n}\n.chat-msg .img-circle\n{\n    border-radius: 50%;\n}\n.chat-msg .chat-img\n{\n    display: inline-block;\n}\n.chat-msg .chat-body\n{\n    display: inline-block;\n    max-width: 80%;\n    background-color: #FFC195;\n    border-radius: 12.5px;\n    padding: 15px;\n}\n.chat-msg .chat-body2\n{\n    display: inline-block;\n    max-width: 80%;\n    background-color:#ccc;\n    border-radius: 12.5px;\n    padding: 15px;\n}\n.chat-msg .chat-body strong\n{\n  color: #0169DA;\n}\n.chat-msg .buyer\n{\n    text-align: right ;\n    float: right;\n}\n.chat-msg .buyer p\n{\n    text-align: left ;\n}\n.chat-msg .sender\n{\n    text-align: left ;\n    float: left;\n}\n.chat-msg .left\n{\n    float: left;\n}\n.chat-msg .right\n{\n    float: right;\n}\n.clearfix {\n  clear: both;\n}\n\n", ""]);
+exports.push([module.i, "\n.chat {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n/* .chat li {\n    margin-bottom: 10px;\n    width: 80%;\n    padding: 5px;\n    border: 1px solid #ccc;\n    border-radius: 10px;\n} */\n.chat li .chat-body p {\n    margin: 0;\n}\n.chat-msg {\n    overflow-y: scroll;\n    max-height: 350px;\n    border: 1px solid #ccc;\n    border-radius: 10px;\n    padding: 10px;\n}\n.chat-msg .chat-img {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-right: 10px;\n}\n.chat-msg .chat-body {\n    display: inline-block;\n    max-width: 80%;\n    background-color: #ececec;\n    border-radius: 12px;\n    padding: 15px;\n}\n.chat-msg .chat-body2 {\n    display: inline-block;\n    max-width: 80%;\n    background-color: #ccc;\n    border-radius: 12px;\n    padding: 15px;\n}\n.chat-msg .chat-body strong {\n    color: #0169da;\n}\n.chat-msg .buyer {\n    text-align: left;\n    float: left;\n}\n.chat-msg .buyer p {\n    text-align: left;\n}\n.chat-msg .sender {\n    text-align: right;\n    float: right;\n}\n.chat-msg .left {\n    float: left;\n}\n.chat-msg .right {\n    float: right;\n}\n.clearfix {\n    clear: both;\n}\n", ""]);
 
 // exports
 
@@ -73989,8 +73997,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\vip-market\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\vip-market\resources\scss\app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\vip-market\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\vip-market\resources\scss\app.scss */"./resources/scss/app.scss");
 
 
 /***/ })
